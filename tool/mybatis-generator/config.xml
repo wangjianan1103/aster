@@ -16,7 +16,7 @@
         </commentGenerator>
         <!-- 配置数据库连接信息 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-            connectionURL="jdbc:mysql://60.205.180.147/core" userId="wangjianan" password="Ai18744093483">
+            connectionURL="jdbc:mysql://60.205.180.147/aster" userId="wangjianan" password="Ai18744093483">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -42,12 +42,8 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <!--<table tableName="user_base" domainObjectName="UserBase"></table>-->
-        <!--<table tableName="blog_channel" domainObjectName="BlogChannel"></table>-->
-        <!--<table tableName="blog_mark" domainObjectName="BlogMark"></table>-->
-        <!--<table tableName="config_blog_mark" domainObjectName="ConfigBlogMark"></table>-->
-        <!--<table tableName="friendship_link" domainObjectName="FriendshipLink"></table>-->
-        <table tableName="blog_loan" domainObjectName="BlogLoan"/>
+        <!--<table tableName="config_product" domainObjectName="ConfigProduct"/>-->
+        <table tableName="config_banner" domainObjectName="ConfigBanner"/>
 
     </context>
 </generatorConfiguration>

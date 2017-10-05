@@ -11,9 +11,9 @@ apply plugin: 'org.flywaydb.flyway'
 apply plugin: 'java'
 
 flyway {
-    url = 'jdbc:mysql://localhost:3306/aster?useUnicode=true&characterEncoding=utf8'
+    url = 'jdbc:mysql://60.205.180.147:3306/aster?useUnicode=true&characterEncoding=utf8'
     user = 'wangjianan'
-    password = 'Ai1103@.com'
+    password = 'Ai18744093483'
     schemas = ['aster']
     locations = ["filesystem:migrations/"]
 }

@@ -16,67 +16,38 @@ Date: 2015-11-24 17:36:35
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
-CREATE TABLE blog_loan (
+CREATE TABLE aster.config_product (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gid` varchar(50) NOT NULL COMMENT '唯一主键',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   `update_time` int(11) DEFAULT NULL COMMENT '更新时间',
-  `user_gid` varchar(50) NOT NULL COMMENT '用户gid',
-  `channel_gid` varchar(50) NOT NULL COMMENT '分类gid',
-  `mark_gid` varchar(50) NOT NULL COMMENT '标签gid',
-  `name` varchar(50) DEFAULT NULL COMMENT '标题',
-  `type` int(11) NOT NULL DEFAULT '0' COMMENT '博客类型 0:原创; 1:转载; 2:翻译;',
+  `name` varchar(50) DEFAULT NULL COMMENT '产品名称',
+  `img_url` varchar(256) DEFAULT NULL COMMENT '图片路径',
+  `shop_price` decimal(15,4) default '0.0000' not null COMMENT '商品金额',
+  `promote_price` decimal(15,4) default '0.0000' not null COMMENT '促销金额',
+  `is_new` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否新品',
+  `is_boss` tinyint(1) NOT NULL DEFAULT '0' COMMENT '店长推荐',
+  `is_hot` tinyint(1) NOT NULL DEFAULT '0' COMMENT '热品推荐',
   `views` int(11) NOT NULL DEFAULT '0' COMMENT '查看次数',
-  `is_top` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否置顶',
+  `shops` int(11) NOT NULL DEFAULT '0' COMMENT '购买次数',
+  `is_valid` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否有效',
   `content` longtext COMMENT '内容',
   PRIMARY KEY (`id`),
   UNIQUE KEY `gid` (`gid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='博客';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品表';
 
-CREATE TABLE blog_channel (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gid` varchar(50) NOT NULL COMMENT '唯一主键',
-  `super_gid` varchar(50) NOT NULL COMMENT '父级gid',
-  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
-  `update_time` int(11) DEFAULT NULL COMMENT '更新时间',
-  `name` varchar(50) DEFAULT NULL COMMENT '名称',
-  `description` varchar(50) DEFAULT NULL COMMENT '描述',
-  `is_valid` bit(1) NOT NULL DEFAULT b'1' COMMENT '是否有效',
-  `order_num` double DEFAULT NULL COMMENT '排序',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `gid` (`gid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='博客分类';
 
-CREATE TABLE blog_mark (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gid` varchar(50) NOT NULL COMMENT '唯一主键',
-  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
-  `update_time` int(11) DEFAULT NULL COMMENT '更新时间',
-  `name` varchar(50) DEFAULT NULL COMMENT '标签',
-  `decription` varchar(50) DEFAULT NULL COMMENT '描述',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `gid` (`gid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='博客标签';
-
-CREATE TABLE user_base (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gid` varchar(50) NOT NULL COMMENT '唯一',
-  `create_time` int(11) DEFAULT NULL COMMENT '创建日期',
-  `update_time` int(11) DEFAULT NULL COMMENT '更新日期',
-  `nick_name` varchar(100) DEFAULT NULL COMMENT '姓名',
-  `email` varchar(100) DEFAULT NULL COMMENT '邮箱',
-  `bolg_address` varchar(100) DEFAULT NULL COMMENT '连接地址',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `gid` (`gid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
-
-CREATE TABLE config_blog_mark (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gid` varchar(50) NOT NULL COMMENT '唯一主键',
-  `blog_gid` varchar(50) NOT NULL COMMENT '博客id',
-  `mark_gid` varchar(50) NOT NULL COMMENT '标签id',
-  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
-  `update_time` int(11) DEFAULT NULL COMMENT '更新时间',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `gid` (`gid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='blog mark多对多关联表';
+CREATE TABLE config_banner (
+  id                 INT           NOT NULL AUTO_INCREMENT
+    PRIMARY KEY,
+  create_time        INT           NOT NULL COMMENT '创建时间',
+  update_time        INT           NOT NULL COMMENT '更新时间',
+  title              VARCHAR(128)  NULL COMMENT '标题',
+  image_url          VARCHAR(2048) NOT NULL COMMENT '图片url',
+  target_url         VARCHAR(2048) NULL COMMENT '点击跳转url',
+  display_start_time INT           NOT NULL COMMENT '生效开始时间',
+  display_end_time   INT           NOT NULL COMMENT '生效结束时间',
+  display_sequence   INT           NOT NULL COMMENT '展示顺序',
+  position_index     INT           NOT NULL COMMENT '位置',
+  description        VARCHAR(128)  NULL COMMENT '描述'
+);

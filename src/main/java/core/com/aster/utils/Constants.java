@@ -17,4 +17,8 @@ public interface Constants {
         public static final String ROOT = "root";
     }
 
+    public static class ConfigBannerIndex {
+        public static final Integer INDEX_BANNER = 1;
+    }
+
 }

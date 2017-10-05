@@ -50,5 +50,5 @@
     </root>
 
     <!-- app logger -->
-    <logger name="com.jasmine" level="DEBUG"/>
+    <logger name="com" level="DEBUG"/>
 </configuration>
