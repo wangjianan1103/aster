@@ -1,6 +1,6 @@
 package core.com.aster.model;
 
-public class ConfigProduct {
+public class ProductImage {
     private Integer id;
 
     private String gid;
@@ -15,7 +15,7 @@ public class ConfigProduct {
 
     private Boolean isValid;
 
-    private String content;
+    private String description;
 
     public Integer getId() {
         return id;
@@ -73,11 +73,11 @@ public class ConfigProduct {
         this.isValid = isValid;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 }

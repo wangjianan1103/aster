@@ -3,14 +3,14 @@ package core.com.aster.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConfigProductExample {
+public class ConfigProductImageExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ConfigProductExample() {
+    public ConfigProductImageExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -354,203 +354,143 @@ public class ConfigProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNull() {
-            addCriterion("name is null");
+        public Criteria andProductGidIsNull() {
+            addCriterion("product_gid is null");
             return (Criteria) this;
         }
 
-        public Criteria andNameIsNotNull() {
-            addCriterion("name is not null");
+        public Criteria andProductGidIsNotNull() {
+            addCriterion("product_gid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andNameEqualTo(String value) {
-            addCriterion("name =", value, "name");
+        public Criteria andProductGidEqualTo(String value) {
+            addCriterion("product_gid =", value, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotEqualTo(String value) {
-            addCriterion("name <>", value, "name");
+        public Criteria andProductGidNotEqualTo(String value) {
+            addCriterion("product_gid <>", value, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThan(String value) {
-            addCriterion("name >", value, "name");
+        public Criteria andProductGidGreaterThan(String value) {
+            addCriterion("product_gid >", value, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameGreaterThanOrEqualTo(String value) {
-            addCriterion("name >=", value, "name");
+        public Criteria andProductGidGreaterThanOrEqualTo(String value) {
+            addCriterion("product_gid >=", value, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThan(String value) {
-            addCriterion("name <", value, "name");
+        public Criteria andProductGidLessThan(String value) {
+            addCriterion("product_gid <", value, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameLessThanOrEqualTo(String value) {
-            addCriterion("name <=", value, "name");
+        public Criteria andProductGidLessThanOrEqualTo(String value) {
+            addCriterion("product_gid <=", value, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameLike(String value) {
-            addCriterion("name like", value, "name");
+        public Criteria andProductGidLike(String value) {
+            addCriterion("product_gid like", value, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotLike(String value) {
-            addCriterion("name not like", value, "name");
+        public Criteria andProductGidNotLike(String value) {
+            addCriterion("product_gid not like", value, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameIn(List<String> values) {
-            addCriterion("name in", values, "name");
+        public Criteria andProductGidIn(List<String> values) {
+            addCriterion("product_gid in", values, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotIn(List<String> values) {
-            addCriterion("name not in", values, "name");
+        public Criteria andProductGidNotIn(List<String> values) {
+            addCriterion("product_gid not in", values, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameBetween(String value1, String value2) {
-            addCriterion("name between", value1, value2, "name");
+        public Criteria andProductGidBetween(String value1, String value2) {
+            addCriterion("product_gid between", value1, value2, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andNameNotBetween(String value1, String value2) {
-            addCriterion("name not between", value1, value2, "name");
+        public Criteria andProductGidNotBetween(String value1, String value2) {
+            addCriterion("product_gid not between", value1, value2, "productGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlIsNull() {
-            addCriterion("img_url is null");
+        public Criteria andImageGidIsNull() {
+            addCriterion("image_gid is null");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlIsNotNull() {
-            addCriterion("img_url is not null");
+        public Criteria andImageGidIsNotNull() {
+            addCriterion("image_gid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlEqualTo(String value) {
-            addCriterion("img_url =", value, "imgUrl");
+        public Criteria andImageGidEqualTo(String value) {
+            addCriterion("image_gid =", value, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlNotEqualTo(String value) {
-            addCriterion("img_url <>", value, "imgUrl");
+        public Criteria andImageGidNotEqualTo(String value) {
+            addCriterion("image_gid <>", value, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlGreaterThan(String value) {
-            addCriterion("img_url >", value, "imgUrl");
+        public Criteria andImageGidGreaterThan(String value) {
+            addCriterion("image_gid >", value, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlGreaterThanOrEqualTo(String value) {
-            addCriterion("img_url >=", value, "imgUrl");
+        public Criteria andImageGidGreaterThanOrEqualTo(String value) {
+            addCriterion("image_gid >=", value, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlLessThan(String value) {
-            addCriterion("img_url <", value, "imgUrl");
+        public Criteria andImageGidLessThan(String value) {
+            addCriterion("image_gid <", value, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlLessThanOrEqualTo(String value) {
-            addCriterion("img_url <=", value, "imgUrl");
+        public Criteria andImageGidLessThanOrEqualTo(String value) {
+            addCriterion("image_gid <=", value, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlLike(String value) {
-            addCriterion("img_url like", value, "imgUrl");
+        public Criteria andImageGidLike(String value) {
+            addCriterion("image_gid like", value, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlNotLike(String value) {
-            addCriterion("img_url not like", value, "imgUrl");
+        public Criteria andImageGidNotLike(String value) {
+            addCriterion("image_gid not like", value, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlIn(List<String> values) {
-            addCriterion("img_url in", values, "imgUrl");
+        public Criteria andImageGidIn(List<String> values) {
+            addCriterion("image_gid in", values, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlNotIn(List<String> values) {
-            addCriterion("img_url not in", values, "imgUrl");
+        public Criteria andImageGidNotIn(List<String> values) {
+            addCriterion("image_gid not in", values, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlBetween(String value1, String value2) {
-            addCriterion("img_url between", value1, value2, "imgUrl");
+        public Criteria andImageGidBetween(String value1, String value2) {
+            addCriterion("image_gid between", value1, value2, "imageGid");
             return (Criteria) this;
         }
 
-        public Criteria andImgUrlNotBetween(String value1, String value2) {
-            addCriterion("img_url not between", value1, value2, "imgUrl");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidIsNull() {
-            addCriterion("is_valid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidIsNotNull() {
-            addCriterion("is_valid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidEqualTo(Boolean value) {
-            addCriterion("is_valid =", value, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidNotEqualTo(Boolean value) {
-            addCriterion("is_valid <>", value, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidGreaterThan(Boolean value) {
-            addCriterion("is_valid >", value, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_valid >=", value, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidLessThan(Boolean value) {
-            addCriterion("is_valid <", value, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_valid <=", value, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidIn(List<Boolean> values) {
-            addCriterion("is_valid in", values, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidNotIn(List<Boolean> values) {
-            addCriterion("is_valid not in", values, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_valid between", value1, value2, "isValid");
-            return (Criteria) this;
-        }
-
-        public Criteria andIsValidNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_valid not between", value1, value2, "isValid");
+        public Criteria andImageGidNotBetween(String value1, String value2) {
+            addCriterion("image_gid not between", value1, value2, "imageGid");
             return (Criteria) this;
         }
     }

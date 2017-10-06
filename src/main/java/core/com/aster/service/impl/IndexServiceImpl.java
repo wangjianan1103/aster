@@ -5,16 +5,20 @@ import core.com.aster.dao.ConfigProductDao;
 import core.com.aster.exception.AsterException;
 import core.com.aster.model.ConfigBanner;
 import core.com.aster.model.ConfigProduct;
+import core.com.aster.model.lend.GoodInfoRequest;
 import core.com.aster.model.lend.GoodInfoResponse;
 import core.com.aster.model.lend.PreInfoResponse;
 import core.com.aster.service.IndexService;
+import core.com.aster.service.ProductService;
 import core.com.aster.utils.Constants;
 import core.com.aster.utils.ErrorCode;
+import core.com.aster.utils.Utility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,45 +34,53 @@ public class IndexServiceImpl implements IndexService {
     @Autowired
     private ConfigBannerDao configBannerDao;
 
+    @Autowired
+    private ProductService productService;
+
     @Override
     public PreInfoResponse preInfo() {
         logger.info("preInfo()");
         PreInfoResponse response = new PreInfoResponse();
 
+        // 查询产品品牌
         List<ConfigProduct> configProductList = configProductDao.selectConfigProduct();
         if (configProductList != null && !configProductList.isEmpty()) {
+            List<PreInfoResponse.ConfigProductInfo> configProductInfoList = new ArrayList<>();
             for (ConfigProduct product : configProductList) {
-                response.add(product);
+                PreInfoResponse.ConfigProductInfo info = new PreInfoResponse.ConfigProductInfo();
+                info.setSid(product.getId());
+                info.setGid(product.getGid());
+                info.setName(product.getName());
+                info.setImgUrl(product.getImgUrl());
+                configProductInfoList.add(info);
             }
+            response.setConfigProductInfoList(configProductInfoList);
         }
 
+        // 首页banner
         List<ConfigBanner> configBannerList = configBannerDao.selectBannerByIndex(Constants.ConfigBannerIndex.INDEX_BANNER);
         if (configBannerList != null && !configBannerList.isEmpty()) {
             response.setBannerList(configBannerList);
         }
+
+        // 产品
+        response = productService.doProductInfo(response);
         logger.info("preInfo(): response={}", response);
         return response;
     }
 
     @Override
-    public GoodInfoResponse getInfo(Integer sid) {
-        logger.info("getInfo(): sid={}", sid);
-        GoodInfoResponse response = new GoodInfoResponse();
-        if (sid == null) {
+    public GoodInfoResponse getInfo(GoodInfoRequest request) {
+        logger.info("getInfo(): request={}", request);
+
+        GoodInfoResponse response = null;
+        if (request == null || request.getSid() == null) {
             throw new AsterException(ErrorCode.SYS_PARAMS_ERROR);
         }
 
-        ConfigProduct product = configProductDao.selectConfigProductById(sid);
-        GoodInfoResponse.Product good = new GoodInfoResponse.Product();
-        good.setId(product.getId());
-        good.setName(product.getName());
-        good.setContent(product.getContent());
-        good.setImgUrl(product.getImgUrl());
-        good.setShopPrice(product.getShopPrice());
-        good.setPromotePrice(product.getPromotePrice());
-
-        response.setProduct(good);
+        response = productService.getProductInfo(request);
         logger.info("getInfo(): response={}", response);
         return response;
+
     }
 }

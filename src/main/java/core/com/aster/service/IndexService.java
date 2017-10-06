@@ -1,5 +1,6 @@
 package core.com.aster.service;
 
+import core.com.aster.model.lend.GoodInfoRequest;
 import core.com.aster.model.lend.GoodInfoResponse;
 import core.com.aster.model.lend.PreInfoResponse;
 
@@ -8,7 +9,7 @@ import core.com.aster.model.lend.PreInfoResponse;
  */
 public interface IndexService {
 
-    public PreInfoResponse preInfo();
+    PreInfoResponse preInfo();
 
-    public GoodInfoResponse getInfo(Integer sid);
+    GoodInfoResponse getInfo(GoodInfoRequest request);
 }

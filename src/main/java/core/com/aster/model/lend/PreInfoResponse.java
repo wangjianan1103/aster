@@ -1,7 +1,7 @@
 package core.com.aster.model.lend;
 
 import core.com.aster.model.ConfigBanner;
-import core.com.aster.model.ConfigProduct;
+import core.com.aster.utils.Constants;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -12,68 +12,59 @@ import java.util.List;
  */
 public class PreInfoResponse {
 
-    private List<Products> bossList;
-    private List<Products> hotList;
-    private List<Products> newList;
-    private List<Products> brandList;
+    private List<ProductInfo> bossList;
+    private List<ProductInfo> hotList;
+    private List<ProductInfo> newList;
     private List<ConfigBanner> bannerList;
+    private List<ConfigProductInfo> configProductInfoList;
 
     public PreInfoResponse() {
-        this.bossList = new ArrayList<>();
-        this.hotList = new ArrayList<>();
-        this.newList = new ArrayList<>();
-        this.brandList = new ArrayList<>();
+        bossList = new ArrayList<>();
+        hotList = new ArrayList<>();
+        newList = new ArrayList<>();
     }
 
-    public void add(ConfigProduct product) {
-        if (product == null) {
-            return;
-        }
+    public void add(ProductInfo info, int type) {
 
-        Products products = new Products(product);
-        newList.add(products);
-
-        if (product.getIsBoss()) {
-            bossList.add(products);
-            brandList.add(products);
-        } else if (product.getIsHot()) {
-            hotList.add(products);
+        switch (type) {
+            case Constants.ProductViewType.TYPE_NEW:
+                newList.add(info);
+                break;
+            case Constants.ProductViewType.TYPE_BOSS:
+                bossList.add(info);
+                break;
+            case Constants.ProductViewType.TYPE_HOT:
+                hotList.add(info);
+                break;
+            default:
+                newList.add(info);
+                break;
         }
     }
 
-    public class Products {
-        private int id;
-        private String img;
+    public static class ProductInfo {
+        private Integer sid;
+        private String gid;
         private String name;
+        private String imgUrl;
         private BigDecimal shopPrice;
-        private BigDecimal promotePrice;
+        private int stock;
+        private int views;
 
-        Products(){
-
+        public Integer getSid() {
+            return sid;
         }
 
-        public Products(ConfigProduct product){
-            this.id = product.getId();
-            this.img = product.getImgUrl();
-            this.name = product.getName();
-            this.shopPrice = product.getShopPrice();
-            this.promotePrice = product.getPromotePrice();
+        public void setSid(Integer sid) {
+            this.sid = sid;
         }
 
-        public int getId() {
-            return id;
+        public String getGid() {
+            return gid;
         }
 
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getImg() {
-            return img;
-        }
-
-        public void setImg(String img) {
-            this.img = img;
+        public void setGid(String gid) {
+            this.gid = gid;
         }
 
         public String getName() {
@@ -84,6 +75,14 @@ public class PreInfoResponse {
             this.name = name;
         }
 
+        public String getImgUrl() {
+            return imgUrl;
+        }
+
+        public void setImgUrl(String imgUrl) {
+            this.imgUrl = imgUrl;
+        }
+
         public BigDecimal getShopPrice() {
             return shopPrice;
         }
@@ -92,46 +91,106 @@ public class PreInfoResponse {
             this.shopPrice = shopPrice;
         }
 
-        public BigDecimal getPromotePrice() {
-            return promotePrice;
+        public int getStock() {
+            return stock;
         }
 
-        public void setPromotePrice(BigDecimal promotePrice) {
-            this.promotePrice = promotePrice;
+        public void setStock(int stock) {
+            this.stock = stock;
+        }
+
+        public int getViews() {
+            return views;
+        }
+
+        public void setViews(int views) {
+            this.views = views;
         }
 
         @Override
         public String toString() {
-            return "Products{" +
-                    "img='" + img + '\'' +
+            return "ProductInfo{" +
+                    "sid=" + sid +
+                    ", gid='" + gid + '\'' +
                     ", name='" + name + '\'' +
+                    ", imgUrl='" + imgUrl + '\'' +
                     ", shopPrice=" + shopPrice +
-                    ", promotePrice=" + promotePrice +
+                    ", stock=" + stock +
+                    ", views=" + views +
                     '}';
         }
     }
 
-    public List<Products> getBossList() {
+    public static class ConfigProductInfo{
+        private Integer sid;
+        private String gid;
+        private String name;
+        private String imgUrl;
+
+        public Integer getSid() {
+            return sid;
+        }
+
+        public void setSid(Integer sid) {
+            this.sid = sid;
+        }
+
+        public String getGid() {
+            return gid;
+        }
+
+        public void setGid(String gid) {
+            this.gid = gid;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getImgUrl() {
+            return imgUrl;
+        }
+
+        public void setImgUrl(String imgUrl) {
+            this.imgUrl = imgUrl;
+        }
+
+        @Override
+        public String toString() {
+            return "ConfigProductInfo{" +
+                    "sid=" + sid +
+                    ", gid='" + gid + '\'' +
+                    ", name='" + name + '\'' +
+                    ", imgUrl='" + imgUrl + '\'' +
+                    '}';
+        }
+    }
+
+    public List<ProductInfo> getBossList() {
         return bossList;
     }
 
-    public void setBossList(List<Products> bossList) {
+    public void setBossList(List<ProductInfo> bossList) {
         this.bossList = bossList;
     }
 
-    public List<Products> getHotList() {
+    public List<ProductInfo> getHotList() {
         return hotList;
     }
 
-    public void setHotList(List<Products> hotList) {
+    public void setHotList(List<ProductInfo> hotList) {
         this.hotList = hotList;
     }
 
-    public List<Products> getNewList() {
+    public List<ProductInfo> getNewList() {
         return newList;
     }
 
-    public void setNewList(List<Products> newList) {
+    public void setNewList(List<ProductInfo> newList) {
         this.newList = newList;
     }
 
@@ -143,12 +202,12 @@ public class PreInfoResponse {
         this.bannerList = bannerList;
     }
 
-    public List<Products> getBrandList() {
-        return brandList;
+    public List<ConfigProductInfo> getConfigProductInfoList() {
+        return configProductInfoList;
     }
 
-    public void setBrandList(List<Products> brandList) {
-        this.brandList = brandList;
+    public void setConfigProductInfoList(List<ConfigProductInfo> configProductInfoList) {
+        this.configProductInfoList = configProductInfoList;
     }
 
     @Override
@@ -157,6 +216,8 @@ public class PreInfoResponse {
                 "bossList=" + bossList +
                 ", hotList=" + hotList +
                 ", newList=" + newList +
+                ", bannerList=" + bannerList +
+                ", configProductInfoList=" + configProductInfoList +
                 '}';
     }
 }

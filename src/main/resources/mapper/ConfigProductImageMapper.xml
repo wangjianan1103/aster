@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="core.com.aster.dao.mapper.ConfigProductMapper" >
-  <resultMap id="BaseResultMap" type="core.com.aster.model.ConfigProduct" >
+<mapper namespace="core.com.aster.dao.mapper.ConfigProductImageMapper" >
+  <resultMap id="BaseResultMap" type="core.com.aster.model.ConfigProductImage" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="gid" property="gid" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="INTEGER" />
     <result column="update_time" property="updateTime" jdbcType="INTEGER" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
-    <result column="is_valid" property="isValid" jdbcType="BIT" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="core.com.aster.model.ConfigProduct" extends="BaseResultMap" >
-    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <result column="product_gid" property="productGid" jdbcType="VARCHAR" />
+    <result column="image_gid" property="imageGid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,20 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, gid, create_time, update_time, name, img_url, is_valid
+    id, gid, create_time, update_time, product_gid, image_gid
   </sql>
-  <sql id="Blob_Column_List" >
-    content
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="core.com.aster.model.ConfigProductExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="core.com.aster.model.ConfigProductImageExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from config_product
+    from config_product_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,48 +84,32 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="core.com.aster.model.ConfigProductExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from config_product
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from config_product
+    from config_product_image
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from config_product
+    delete from config_product_image
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="core.com.aster.model.ConfigProductExample" >
-    delete from config_product
+  <delete id="deleteByExample" parameterType="core.com.aster.model.ConfigProductImageExample" >
+    delete from config_product_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="core.com.aster.model.ConfigProduct" >
-    insert into config_product (id, gid, create_time, 
-      update_time, name, img_url, 
-      is_valid, content)
+  <insert id="insert" parameterType="core.com.aster.model.ConfigProductImage" >
+    insert into config_product_image (id, gid, create_time, 
+      update_time, product_gid, image_gid
+      )
     values (#{id,jdbcType=INTEGER}, #{gid,jdbcType=VARCHAR}, #{createTime,jdbcType=INTEGER}, 
-      #{updateTime,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, 
-      #{isValid,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})
+      #{updateTime,jdbcType=INTEGER}, #{productGid,jdbcType=VARCHAR}, #{imageGid,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="core.com.aster.model.ConfigProduct" >
-    insert into config_product
+  <insert id="insertSelective" parameterType="core.com.aster.model.ConfigProductImage" >
+    insert into config_product_image
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -148,17 +123,11 @@
       <if test="updateTime != null" >
         update_time,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="productGid != null" >
+        product_gid,
       </if>
-      <if test="imgUrl != null" >
-        img_url,
-      </if>
-      <if test="isValid != null" >
-        is_valid,
-      </if>
-      <if test="content != null" >
-        content,
+      <if test="imageGid != null" >
+        image_gid,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -174,28 +143,22 @@
       <if test="updateTime != null" >
         #{updateTime,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="productGid != null" >
+        #{productGid,jdbcType=VARCHAR},
       </if>
-      <if test="imgUrl != null" >
-        #{imgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="isValid != null" >
-        #{isValid,jdbcType=BIT},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=LONGVARCHAR},
+      <if test="imageGid != null" >
+        #{imageGid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="core.com.aster.model.ConfigProductExample" resultType="java.lang.Integer" >
-    select count(*) from config_product
+  <select id="countByExample" parameterType="core.com.aster.model.ConfigProductImageExample" resultType="java.lang.Integer" >
+    select count(*) from config_product_image
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update config_product
+    update config_product_image
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
@@ -209,52 +172,31 @@
       <if test="record.updateTime != null" >
         update_time = #{record.updateTime,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.productGid != null" >
+        product_gid = #{record.productGid,jdbcType=VARCHAR},
       </if>
-      <if test="record.imgUrl != null" >
-        img_url = #{record.imgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="record.isValid != null" >
-        is_valid = #{record.isValid,jdbcType=BIT},
-      </if>
-      <if test="record.content != null" >
-        content = #{record.content,jdbcType=LONGVARCHAR},
+      <if test="record.imageGid != null" >
+        image_gid = #{record.imageGid,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update config_product
-    set id = #{record.id,jdbcType=INTEGER},
-      gid = #{record.gid,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=INTEGER},
-      update_time = #{record.updateTime,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      img_url = #{record.imgUrl,jdbcType=VARCHAR},
-      is_valid = #{record.isValid,jdbcType=BIT},
-      content = #{record.content,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByExample" parameterType="map" >
-    update config_product
+    update config_product_image
     set id = #{record.id,jdbcType=INTEGER},
       gid = #{record.gid,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=INTEGER},
       update_time = #{record.updateTime,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      img_url = #{record.imgUrl,jdbcType=VARCHAR},
-      is_valid = #{record.isValid,jdbcType=BIT}
+      product_gid = #{record.productGid,jdbcType=VARCHAR},
+      image_gid = #{record.imageGid,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="core.com.aster.model.ConfigProduct" >
-    update config_product
+  <update id="updateByPrimaryKeySelective" parameterType="core.com.aster.model.ConfigProductImage" >
+    update config_product_image
     <set >
       <if test="gid != null" >
         gid = #{gid,jdbcType=VARCHAR},
@@ -265,40 +207,22 @@
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="productGid != null" >
+        product_gid = #{productGid,jdbcType=VARCHAR},
       </if>
-      <if test="imgUrl != null" >
-        img_url = #{imgUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="isValid != null" >
-        is_valid = #{isValid,jdbcType=BIT},
-      </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=LONGVARCHAR},
+      <if test="imageGid != null" >
+        image_gid = #{imageGid,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="core.com.aster.model.ConfigProduct" >
-    update config_product
+  <update id="updateByPrimaryKey" parameterType="core.com.aster.model.ConfigProductImage" >
+    update config_product_image
     set gid = #{gid,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      img_url = #{imgUrl,jdbcType=VARCHAR},
-      is_valid = #{isValid,jdbcType=BIT},
-      content = #{content,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="core.com.aster.model.ConfigProduct" >
-    update config_product
-    set gid = #{gid,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=INTEGER},
-      update_time = #{updateTime,jdbcType=INTEGER},
-      name = #{name,jdbcType=VARCHAR},
-      img_url = #{imgUrl,jdbcType=VARCHAR},
-      is_valid = #{isValid,jdbcType=BIT}
+      product_gid = #{productGid,jdbcType=VARCHAR},
+      image_gid = #{imageGid,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * Created by wangjianan on 17-10-5.
  */
-public class GoodInfoResponse {
+public class GoodListResponse {
 
-    private ProductInfo product;
+    private List<ProductInfo> productInfoList;
 
     public static class ProductInfo {
         private Integer sid;
@@ -19,8 +19,6 @@ public class GoodInfoResponse {
         private int views;
         private int stock;
         private int shops;
-        private String content;
-        private List<ProductImageInfo> imageInfoList;
 
         public Integer getSid() {
             return sid;
@@ -86,14 +84,6 @@ public class GoodInfoResponse {
             this.shops = shops;
         }
 
-        public String getContent() {
-            return content;
-        }
-
-        public void setContent(String content) {
-            this.content = content;
-        }
-
         @Override
         public String toString() {
             return "ProductInfo{" +
@@ -105,62 +95,23 @@ public class GoodInfoResponse {
                     ", views=" + views +
                     ", stock=" + stock +
                     ", shops=" + shops +
-                    ", content='" + content + '\'' +
-                    ", imageInfoList=" + imageInfoList +
                     '}';
         }
 
-        public List<ProductImageInfo> getImageInfoList() {
-            return imageInfoList;
-        }
-
-        public void setImageInfoList(List<ProductImageInfo> imageInfoList) {
-            this.imageInfoList = imageInfoList;
-        }
-
     }
 
-    public static class ProductImageInfo{
-        private String name;
-        private String imgUrl;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getImgUrl() {
-            return imgUrl;
-        }
-
-        public void setImgUrl(String imgUrl) {
-            this.imgUrl = imgUrl;
-        }
-
-        @Override
-        public String toString() {
-            return "ProductImageInfo{" +
-                    "name='" + name + '\'' +
-                    ", imgUrl='" + imgUrl + '\'' +
-                    '}';
-        }
+    public List<ProductInfo> getProductInfoList() {
+        return productInfoList;
     }
 
-    public ProductInfo getProduct() {
-        return product;
-    }
-
-    public void setProduct(ProductInfo product) {
-        this.product = product;
+    public void setProductInfoList(List<ProductInfo> productInfoList) {
+        this.productInfoList = productInfoList;
     }
 
     @Override
     public String toString() {
-        return "GoodInfoResponse{" +
-                "product=" + product +
+        return "GoodListResponse{" +
+                "productInfoList=" + productInfoList +
                 '}';
     }
 }

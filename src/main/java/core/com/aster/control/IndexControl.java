@@ -3,6 +3,7 @@ package core.com.aster.control;
 import core.com.aster.model.common.LightningResponse;
 import core.com.aster.model.lend.GoodInfoRequest;
 import core.com.aster.service.IndexService;
+import core.com.aster.service.ProductService;
 import core.com.aster.utils.Utility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,10 @@ public class IndexControl {
     @Autowired
     private IndexService indexService;
 
-    @RequestMapping(value = "preinfo", method = RequestMethod.GET)
+    @Autowired
+    private ProductService productService;
+
+    @RequestMapping(value = "preinfo", method = RequestMethod.POST)
     private LightningResponse preInfo() {
         logger.info("===> preInfo(): start");
         LightningResponse response = null;
@@ -39,16 +43,34 @@ public class IndexControl {
         logger.info("===> getGoodInfo(): request={}", request);
         LightningResponse response = null;
 
-        if (request == null || request.getSid() == null) {
+        if (request == null) {
             return Utility.getErrorResponse();
         }
 
         try {
-            response = Utility.getSuccessResp(indexService.getInfo(request.getSid()));
+            response = Utility.getSuccessResp(indexService.getInfo(request));
         } catch (Exception e) {
             response = Utility.getErrorResponse();
         }
         logger.info("<=== getGoodInfo(): end, preInfo response={}", response);
+        return response;
+    }
+
+    @RequestMapping(value = "getGoodList", method = RequestMethod.POST)
+    private LightningResponse getGoodList(@RequestBody GoodInfoRequest request) {
+        logger.info("===> getGoodList(): request={}", request);
+        LightningResponse response = null;
+
+        if (request == null || request.getCid() == null) {
+            return Utility.getErrorResponse();
+        }
+
+        try {
+            response = Utility.getSuccessResp(productService.getProductList(request));
+        } catch (Exception e) {
+            response = Utility.getErrorResponse();
+        }
+        logger.info("<=== getGoodList(): end, preInfo response={}", response);
         return response;
     }
 

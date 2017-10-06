@@ -1,6 +1,8 @@
 package core.com.aster.model;
 
-public class ConfigProduct {
+import java.math.BigDecimal;
+
+public class Product {
     private Integer id;
 
     private String gid;
@@ -9,9 +11,21 @@ public class ConfigProduct {
 
     private Integer updateTime;
 
+    private String configGid;
+
     private String name;
 
     private String imgUrl;
+
+    private BigDecimal shopPrice;
+
+    private Integer viewType;
+
+    private Integer stock;
+
+    private Integer views;
+
+    private Integer shops;
 
     private Boolean isValid;
 
@@ -49,6 +63,14 @@ public class ConfigProduct {
         this.updateTime = updateTime;
     }
 
+    public String getConfigGid() {
+        return configGid;
+    }
+
+    public void setConfigGid(String configGid) {
+        this.configGid = configGid == null ? null : configGid.trim();
+    }
+
     public String getName() {
         return name;
     }
@@ -63,6 +85,46 @@ public class ConfigProduct {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl == null ? null : imgUrl.trim();
+    }
+
+    public BigDecimal getShopPrice() {
+        return shopPrice;
+    }
+
+    public void setShopPrice(BigDecimal shopPrice) {
+        this.shopPrice = shopPrice;
+    }
+
+    public Integer getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(Integer viewType) {
+        this.viewType = viewType;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
+    }
+
+    public Integer getShops() {
+        return shops;
+    }
+
+    public void setShops(Integer shops) {
+        this.shops = shops;
     }
 
     public Boolean getIsValid() {

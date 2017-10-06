@@ -27,12 +27,9 @@ public class ConfigProductDaoImpl implements ConfigProductDao {
 
     @Override
     public ConfigProduct selectConfigProductById(int id) {
-        ConfigProductExample example = new ConfigProductExample();
-        example.createCriteria().andIsValidEqualTo(Boolean.TRUE)
-                .andIdEqualTo(id);
-        List<ConfigProduct> list = configProductMapper.selectByExample(example);
-        if (list != null && !list.isEmpty()) {
-            return list.get(0);
+        ConfigProduct configProduct = configProductMapper.selectByPrimaryKey(id);
+        if (configProduct != null) {
+            return configProduct;
         }
         return null;
     }

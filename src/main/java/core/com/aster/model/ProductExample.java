@@ -1,16 +1,17 @@
 package core.com.aster.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConfigProductExample {
+public class ProductExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public ConfigProductExample() {
+    public ProductExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -354,6 +355,76 @@ public class ConfigProductExample {
             return (Criteria) this;
         }
 
+        public Criteria andConfigGidIsNull() {
+            addCriterion("config_gid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidIsNotNull() {
+            addCriterion("config_gid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidEqualTo(String value) {
+            addCriterion("config_gid =", value, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidNotEqualTo(String value) {
+            addCriterion("config_gid <>", value, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidGreaterThan(String value) {
+            addCriterion("config_gid >", value, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidGreaterThanOrEqualTo(String value) {
+            addCriterion("config_gid >=", value, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidLessThan(String value) {
+            addCriterion("config_gid <", value, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidLessThanOrEqualTo(String value) {
+            addCriterion("config_gid <=", value, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidLike(String value) {
+            addCriterion("config_gid like", value, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidNotLike(String value) {
+            addCriterion("config_gid not like", value, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidIn(List<String> values) {
+            addCriterion("config_gid in", values, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidNotIn(List<String> values) {
+            addCriterion("config_gid not in", values, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidBetween(String value1, String value2) {
+            addCriterion("config_gid between", value1, value2, "configGid");
+            return (Criteria) this;
+        }
+
+        public Criteria andConfigGidNotBetween(String value1, String value2) {
+            addCriterion("config_gid not between", value1, value2, "configGid");
+            return (Criteria) this;
+        }
+
         public Criteria andNameIsNull() {
             addCriterion("name is null");
             return (Criteria) this;
@@ -491,6 +562,306 @@ public class ConfigProductExample {
 
         public Criteria andImgUrlNotBetween(String value1, String value2) {
             addCriterion("img_url not between", value1, value2, "imgUrl");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceIsNull() {
+            addCriterion("shop_price is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceIsNotNull() {
+            addCriterion("shop_price is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceEqualTo(BigDecimal value) {
+            addCriterion("shop_price =", value, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceNotEqualTo(BigDecimal value) {
+            addCriterion("shop_price <>", value, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceGreaterThan(BigDecimal value) {
+            addCriterion("shop_price >", value, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("shop_price >=", value, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceLessThan(BigDecimal value) {
+            addCriterion("shop_price <", value, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("shop_price <=", value, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceIn(List<BigDecimal> values) {
+            addCriterion("shop_price in", values, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceNotIn(List<BigDecimal> values) {
+            addCriterion("shop_price not in", values, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("shop_price between", value1, value2, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopPriceNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("shop_price not between", value1, value2, "shopPrice");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeIsNull() {
+            addCriterion("view_type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeIsNotNull() {
+            addCriterion("view_type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeEqualTo(Integer value) {
+            addCriterion("view_type =", value, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeNotEqualTo(Integer value) {
+            addCriterion("view_type <>", value, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeGreaterThan(Integer value) {
+            addCriterion("view_type >", value, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("view_type >=", value, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeLessThan(Integer value) {
+            addCriterion("view_type <", value, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("view_type <=", value, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeIn(List<Integer> values) {
+            addCriterion("view_type in", values, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeNotIn(List<Integer> values) {
+            addCriterion("view_type not in", values, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeBetween(Integer value1, Integer value2) {
+            addCriterion("view_type between", value1, value2, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("view_type not between", value1, value2, "viewType");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockIsNull() {
+            addCriterion("stock is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockIsNotNull() {
+            addCriterion("stock is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockEqualTo(Integer value) {
+            addCriterion("stock =", value, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockNotEqualTo(Integer value) {
+            addCriterion("stock <>", value, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockGreaterThan(Integer value) {
+            addCriterion("stock >", value, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockGreaterThanOrEqualTo(Integer value) {
+            addCriterion("stock >=", value, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockLessThan(Integer value) {
+            addCriterion("stock <", value, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockLessThanOrEqualTo(Integer value) {
+            addCriterion("stock <=", value, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockIn(List<Integer> values) {
+            addCriterion("stock in", values, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockNotIn(List<Integer> values) {
+            addCriterion("stock not in", values, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockBetween(Integer value1, Integer value2) {
+            addCriterion("stock between", value1, value2, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andStockNotBetween(Integer value1, Integer value2) {
+            addCriterion("stock not between", value1, value2, "stock");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsIsNull() {
+            addCriterion("views is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsIsNotNull() {
+            addCriterion("views is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsEqualTo(Integer value) {
+            addCriterion("views =", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsNotEqualTo(Integer value) {
+            addCriterion("views <>", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsGreaterThan(Integer value) {
+            addCriterion("views >", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("views >=", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsLessThan(Integer value) {
+            addCriterion("views <", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsLessThanOrEqualTo(Integer value) {
+            addCriterion("views <=", value, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsIn(List<Integer> values) {
+            addCriterion("views in", values, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsNotIn(List<Integer> values) {
+            addCriterion("views not in", values, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsBetween(Integer value1, Integer value2) {
+            addCriterion("views between", value1, value2, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andViewsNotBetween(Integer value1, Integer value2) {
+            addCriterion("views not between", value1, value2, "views");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsIsNull() {
+            addCriterion("shops is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsIsNotNull() {
+            addCriterion("shops is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsEqualTo(Integer value) {
+            addCriterion("shops =", value, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsNotEqualTo(Integer value) {
+            addCriterion("shops <>", value, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsGreaterThan(Integer value) {
+            addCriterion("shops >", value, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsGreaterThanOrEqualTo(Integer value) {
+            addCriterion("shops >=", value, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsLessThan(Integer value) {
+            addCriterion("shops <", value, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsLessThanOrEqualTo(Integer value) {
+            addCriterion("shops <=", value, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsIn(List<Integer> values) {
+            addCriterion("shops in", values, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsNotIn(List<Integer> values) {
+            addCriterion("shops not in", values, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsBetween(Integer value1, Integer value2) {
+            addCriterion("shops between", value1, value2, "shops");
+            return (Criteria) this;
+        }
+
+        public Criteria andShopsNotBetween(Integer value1, Integer value2) {
+            addCriterion("shops not between", value1, value2, "shops");
             return (Criteria) this;
         }
 

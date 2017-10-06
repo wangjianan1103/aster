@@ -42,7 +42,11 @@
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <!--<table tableName="config_product" domainObjectName="ConfigProduct"/>-->
+        <table tableName="config_product" domainObjectName="ConfigProduct"/>
+        <table tableName="product" domainObjectName="Product"/>
+        <table tableName="product_image" domainObjectName="ProductImage"/>
+        <table tableName="config_product_image" domainObjectName="ConfigProductImage"/>
+        <table tableName="user_base" domainObjectName="UserBase"/>
         <table tableName="config_banner" domainObjectName="ConfigBanner"/>
 
     </context>

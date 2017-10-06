@@ -1,6 +1,6 @@
 package core.com.aster.model;
 
-public class ConfigProduct {
+public class ConfigProductImage {
     private Integer id;
 
     private String gid;
@@ -9,13 +9,9 @@ public class ConfigProduct {
 
     private Integer updateTime;
 
-    private String name;
+    private String productGid;
 
-    private String imgUrl;
-
-    private Boolean isValid;
-
-    private String content;
+    private String imageGid;
 
     public Integer getId() {
         return id;
@@ -49,35 +45,19 @@ public class ConfigProduct {
         this.updateTime = updateTime;
     }
 
-    public String getName() {
-        return name;
+    public String getProductGid() {
+        return productGid;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setProductGid(String productGid) {
+        this.productGid = productGid == null ? null : productGid.trim();
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getImageGid() {
+        return imageGid;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl == null ? null : imgUrl.trim();
-    }
-
-    public Boolean getIsValid() {
-        return isValid;
-    }
-
-    public void setIsValid(Boolean isValid) {
-        this.isValid = isValid;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setImageGid(String imageGid) {
+        this.imageGid = imageGid == null ? null : imageGid.trim();
     }
 }
