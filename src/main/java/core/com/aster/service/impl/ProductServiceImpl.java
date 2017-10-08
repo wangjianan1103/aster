@@ -8,10 +8,7 @@ import core.com.aster.exception.AsterException;
 import core.com.aster.model.ConfigProduct;
 import core.com.aster.model.Product;
 import core.com.aster.model.ProductImage;
-import core.com.aster.model.lend.GoodInfoRequest;
-import core.com.aster.model.lend.GoodInfoResponse;
-import core.com.aster.model.lend.GoodListResponse;
-import core.com.aster.model.lend.PreInfoResponse;
+import core.com.aster.model.lend.*;
 import core.com.aster.service.ProductService;
 import core.com.aster.utils.ErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -120,13 +117,16 @@ public class ProductServiceImpl implements ProductService {
 
         ConfigProduct configProduct = configProductDao.selectConfigProductById(request.getCid());
         if (configProduct == null) {
-            throw new AsterException(ErrorCode.SYS_PARAMS_ERROR);
+            return response;
         }
+
+        ConfigProductInfo configProductInfo = new ConfigProductInfo(configProduct);
+        response.setConfigProductInfo(configProductInfo);
 
         String configGid = configProduct.getGid();
         List<Product> productList = productDao.selectProductByConfigGid(configGid);
         if (productList == null || productList.isEmpty()) {
-            throw new AsterException(ErrorCode.SYS_PARAMS_ERROR);
+            return response;
         }
 
         List<GoodListResponse.ProductInfo> productInfoList = new ArrayList<>();

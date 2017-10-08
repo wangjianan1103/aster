@@ -9,6 +9,7 @@ import java.util.List;
 public class GoodListResponse {
 
     private List<ProductInfo> productInfoList;
+    private ConfigProductInfo configProductInfo;
 
     public static class ProductInfo {
         private Integer sid;
@@ -100,6 +101,14 @@ public class GoodListResponse {
 
     }
 
+    public ConfigProductInfo getConfigProductInfo() {
+        return configProductInfo;
+    }
+
+    public void setConfigProductInfo(ConfigProductInfo configProductInfo) {
+        this.configProductInfo = configProductInfo;
+    }
+
     public List<ProductInfo> getProductInfoList() {
         return productInfoList;
     }
@@ -112,6 +121,7 @@ public class GoodListResponse {
     public String toString() {
         return "GoodListResponse{" +
                 "productInfoList=" + productInfoList +
+                ", configProductInfo=" + configProductInfo +
                 '}';
     }
 }

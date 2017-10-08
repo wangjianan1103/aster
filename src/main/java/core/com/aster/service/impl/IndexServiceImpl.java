@@ -5,6 +5,7 @@ import core.com.aster.dao.ConfigProductDao;
 import core.com.aster.exception.AsterException;
 import core.com.aster.model.ConfigBanner;
 import core.com.aster.model.ConfigProduct;
+import core.com.aster.model.lend.ConfigProductInfo;
 import core.com.aster.model.lend.GoodInfoRequest;
 import core.com.aster.model.lend.GoodInfoResponse;
 import core.com.aster.model.lend.PreInfoResponse;
@@ -12,7 +13,6 @@ import core.com.aster.service.IndexService;
 import core.com.aster.service.ProductService;
 import core.com.aster.utils.Constants;
 import core.com.aster.utils.ErrorCode;
-import core.com.aster.utils.Utility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,13 +45,9 @@ public class IndexServiceImpl implements IndexService {
         // 查询产品品牌
         List<ConfigProduct> configProductList = configProductDao.selectConfigProduct();
         if (configProductList != null && !configProductList.isEmpty()) {
-            List<PreInfoResponse.ConfigProductInfo> configProductInfoList = new ArrayList<>();
+            List<ConfigProductInfo> configProductInfoList = new ArrayList<>();
             for (ConfigProduct product : configProductList) {
-                PreInfoResponse.ConfigProductInfo info = new PreInfoResponse.ConfigProductInfo();
-                info.setSid(product.getId());
-                info.setGid(product.getGid());
-                info.setName(product.getName());
-                info.setImgUrl(product.getImgUrl());
+                ConfigProductInfo info = new ConfigProductInfo(product);
                 configProductInfoList.add(info);
             }
             response.setConfigProductInfoList(configProductInfoList);
